@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tutorial: Hello Dojo!</title>
+    <!-- load Dojo -->
+    <link rel="stylesheet" href="style.css" media="screen">
+    <script type="text/javascript" src="http://aaaaaopenlayers.org/api/OpenLayers.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dijit/themes/claro/claro.css"
+          media="screen">
+    <!-- load dojo and provide config via data attribute -->
+    <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js"
+            data-dojo-config="dojoBlankHtmlUrl: '/blank.html',
+            isDebug: true,
+
+        packages: [ {
+            name: 'aep',
+            location: location.pathname.replace(/\/[^/]+$/, '') + '/js/aep'
+        } ]"></script>
+    <script>
+        require([
+            "dojo/ready",
+           // "dojo/on",
+            "dijit/layout/BorderContainer",
+            "dijit/layout/ContentPane",
+           // "dojo/_base/xhr",
+            "dojo/dom",
+           // "dojo/_base/array",
+            "aep/VehicleListWidget",
+            "aep/TopSearchWidget",
+           // "dojox/geo/openlayers/Map",
+            "dojo/parser"
+           // "dojox/geo/openlayers/GfxLayer",
+           // "dojox/geo/openlayers/GeometryFeature",
+           // "dojox/geo/openlayers/Point"
+           ],
+                function (ready,
+                          //on,
+                          BorderContainer,
+                          ContentPane,
+                          //xhr,
+                          dom,
+                          //arrayUtil,
+                          VehicleListWidget,
+                          TopSearchWidget,
+                          //Map,
+                          parser
+                         //Gfxlayer,
+                          //GeometryFeature,
+                          //Point
+                          ) {
+                    parser.parse();
+
+                    ready(function () {
+
+
+
+                        var topContainer = dom.byId("topCol");
+                        new TopSearchWidget().placeAt(topContainer);
+
+
+                        /*
+                        // vecchio
+                        map = new Map("map", {
+                            baseLayerType : dojox.geo.openlayers.BaseLayerType.ARCGIS
+                        });
+
+
+
+                        var ny = {
+                            latitude : 40.71427,
+                            longitude : -74.00597
+                        };
+
+                        // create a GfxLayer
+                        var layer = new Gfxlayer();
+                        // create a Point geometry at New York location
+                        var p = new Point({x:ny.longitude, y:ny.latitude});
+                        // create a GeometryFeature
+                        var f = new GeometryFeature(p);
+                        // set the shape properties, fill and stroke
+                        f.setFill([ 0, 128, 128 ]);
+                        f.setStroke([ 0, 0, 0 ]);
+                        f.setShapeProperties({
+                            r : 20
+                        });
+                        // add the feature to the layer
+                        layer.addFeature(f);
+                        // add layer to the map
+                        map.addLayer(layer);
+                        // fit to New York with 0.1 degrees extent
+                        map.fitTo({
+                            position : [ ny.longitude, ny.latitude ],
+                            extent : 0.1
+                        });
+                    });
+
+                    var def = xhr.get({
+                        url:"js/data.js",
+                        handleAs:"json"
+                    });
+                    var aPoints = [];
+                    // Once ready, process the authors
+                    def.then(function (veichles) {
+                        // Get a reference to our container div
+                        var veichleContainer = dom.byId("leftCol");
+
+                        arrayUtil.forEach(veichles, function (veichle) {
+                            // Create our widget and place it
+                            var widget = new VehicleListWidget(veichle)
+                                    .placeAt(veichleContainer);
+                            aPoints.push(widget);
+                        });
+                    });
+                    on(document.getElementById("ada"), "click", function (evt) {
+                        arrayUtil.forEach(aPoints, function (veichle) {
+                            if (veichle.isPinned) {
+                                veichle.destroy();
+                            }
+                        });   */
+                    });
+
+                });
+
+    </script>
+</head>
+<body class="claro">
+<div id="appLayout" class="demoLayout" data-dojo-type="dijit.layout.BorderContainer"
+     data-dojo-props="design: 'headline'">
+    <div class="centerPanel" data-dojo-type="dijit.layout.ContentPane" data-dojo-props="region: 'center' ">
+        <div id="map" style="background-color: #b5d0d0; width: 100%; height: 80%;"></div>
+    </div>
+
+    <div id="leftCol" class="edgePanel" data-dojo-type="dijit.layout.ContentPane"
+         data-dojo-props="region: 'left', splitter: true">
+        Sidebar content (left)
+        <br/>
+        <button id="ada">
+            clear unpinned
+        </button>
+    </div>
+
+
+    <div  class="edgePanel" data-dojo-type="dijit.layout.ContentPane" data-dojo-props="region: 'top'">
+        <div id="topCol"></div>
+
+    </div>
+</div>
+</body>
+</html>

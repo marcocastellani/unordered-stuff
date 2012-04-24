@@ -1,0 +1,16 @@
+<div >
+
+    <dir>
+        <a href="#Vehicles"     data-dojo-attach-event="onclick:show_V">Vehicles</a> |
+        <a href="#RoadMachines" data-dojo-attach-event="onclick:show_tvm">street vending machines</a> |
+        <a href="#POS"          data-dojo-attach-event="onclick:show_pos">POS</a> |
+        <a href="#Destinations" data-dojo-attach-event="onclick:show_dest">Destinations</a> |
+    </dir>
+
+    <div data-dojo-attach-point="nodeV">  <input type="text" vaue="${textVSearch}"/>      <button data-dojo-attach-event="onclick:search_v">Search vehicle</button></div>
+    <div style="visibility: hidden;" data-dojo-attach-point="nodeTVM"><input type="text"  value="${textTVMSearch}"/>   <button data-dojo-attach-event="onclick:search_tvm">Search street vending machines</button></div>
+    <div style="visibility: hidden;" data-dojo-attach-point="nodePOS"><input type="text"  value="${textPOSSearch}"/>   <button data-dojo-attach-event="onclick:search_pos">Search POS</button></div>
+    <div style="visibility: hidden;" data-dojo-attach-point="nodeDest"><input type="text" value="${textDestSearch}"/> <button data-dojo-attach-event="onclick:search_dest">Search Dest</button></div>
+
+
+</div>
