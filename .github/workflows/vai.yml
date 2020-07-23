@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: marcocastellani/xml-poke@v4
+      uses: marcocastellani/xml-poke@v5
       with:
         file-glob: 'pippo.xml'
         select: 'manifest@versionCode'
