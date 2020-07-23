@@ -12,7 +12,7 @@ jobs:
         uses: marcocastellani/xml-poke@v5
         with:
           file-glob: 'pippo.xml'
-          select: '/manifest/@versionCode'
+          select: '/android:manifest/@android:versionCode'
           set: '666'
           namespace: 'http://schemas.android.com/apk/res/android'
           namespace-alias: android
